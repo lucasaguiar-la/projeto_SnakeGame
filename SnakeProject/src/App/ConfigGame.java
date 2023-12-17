@@ -59,6 +59,7 @@ public class ConfigGame extends JPanel implements ActionListener{
 			g.setColor(new Color(239, 154, 154));
 			g.fillOval(appleX, appleY, UNIT_SIZE, UNIT_SIZE);
 			
+			// Corpo e cabeça da cobrinha
 			for(int i = 0; i < bodyParts; i++) {
 				if(i == 0) {
 					g.setColor(new Color(129, 199, 132));
@@ -103,11 +104,41 @@ public class ConfigGame extends JPanel implements ActionListener{
 	}
 	
 	public void checkApple() {
-		
+		if((x[0] == appleX) && y[0] == appleY) {
+			bodyParts++;
+			appleEatens++;
+			newApple();
+		}
 	}
 	
 	public void checkCollisions() {
 		
+		// Colissão com a própria cabeça
+		for(int i = bodyParts; i > 0; i--) {
+			if((x[0] == x[i]) && (y[0] == y[i])) {
+				running = false;
+			}
+		}
+		// Colissão com a borda esquerda
+		if(x[0] < 0) {
+			running = false;
+		}
+		// Collisão com a borda direita
+		if(x[0] > SCREEN_WIDTH) {
+			running = false;
+		}
+		// Colissão com o topo
+		if(y[0] < 0) {
+			running = false;
+		}
+		// Colissão com a base
+		if(y[0] > SCREEN_HEIGHT) {
+			running = false;
+		}
+		// Caso haja colissão o timer para
+		if(!running) {
+			timer.stop();
+		}
 	}
 	
 	public void gameOver() {
@@ -120,6 +151,8 @@ public class ConfigGame extends JPanel implements ActionListener{
 		
 		if(running) {
 			move();
+			checkApple();
+			checkCollisions();
 		}
 		repaint();
 		

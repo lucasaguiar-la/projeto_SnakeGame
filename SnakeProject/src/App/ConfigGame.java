@@ -22,4 +22,68 @@ public class ConfigGame extends JPanel implements ActionListener{
 	boolean running = false;
 	Timer timer;
 	Random random;
+	
+	ConfigGame(){
+		random = new Random();
+		this.setPreferredSize(new Dimension(SCREEN_HEIGHT, SCREEN_WIDTH));
+		this.setBackground(new Color(186, 187, 189));
+		this.setFocusable(true);
+		start();
+	}
+	
+	public void start() {
+		
+	}
+	
+	public void componentesPintura(Graphics g) {
+		
+	}
+	
+	public void Pintura (Graphics g) {
+		
+	}
+	
+	public void novaMaca() {
+		
+	}
+	
+	public void movimentos() {
+		
+	}
+	
+	public void verificarMaca() {
+		
+	}
+	
+	public void colissoes() {
+		
+	}
+	
+	public void gameOver() {
+		
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

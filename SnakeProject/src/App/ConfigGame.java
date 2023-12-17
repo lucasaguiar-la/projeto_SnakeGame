@@ -29,6 +29,7 @@ public class ConfigGame extends JPanel implements ActionListener{
 		this.setPreferredSize(new Dimension(SCREEN_HEIGHT, SCREEN_WIDTH));
 		this.setBackground(new Color(186, 187, 189));
 		this.setFocusable(true);
+		this.addKeyListener(new MyKeysAdapter());
 		start();
 		
 	}
@@ -121,6 +122,35 @@ public class ConfigGame extends JPanel implements ActionListener{
 			move();
 		}
 		repaint();
+		
+	}
+	
+	public class MyKeysAdapter extends KeyAdapter {
+		@Override
+		public void keyPressed(KeyEvent e) {
+			switch(e.getKeyCode()) {
+			case KeyEvent.VK_LEFT:
+				if(direction != 'R') {
+					direction = 'L';
+				}
+				break;
+			case KeyEvent.VK_RIGHT:
+				if(direction != 'L') {
+					direction = 'R';
+				}
+				break;
+			case KeyEvent.VK_UP:
+				if(direction != 'D') {
+					direction = 'U';
+				}
+				break;
+			case KeyEvent.VK_DOWN:
+				if(direction != 'U') {
+					direction = 'D';
+				}
+				break;
+			}
+		}
 	}
 }
 

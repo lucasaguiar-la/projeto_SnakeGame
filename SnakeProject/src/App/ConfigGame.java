@@ -24,38 +24,58 @@ public class ConfigGame extends JPanel implements ActionListener{
 	Random random;
 	
 	ConfigGame(){
+		
 		random = new Random();
 		this.setPreferredSize(new Dimension(SCREEN_HEIGHT, SCREEN_WIDTH));
 		this.setBackground(new Color(186, 187, 189));
 		this.setFocusable(true);
 		start();
+		
 	}
 	
 	public void start() {
+		newApple();
+		running = true;
+		timer = new Timer(DELAY,this);
+		timer.start();
+	}
+	
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		draw(g);
+	}
+	
+	public void draw (Graphics g) {
+		
+		if(running) {
+			// Linhas guias para visualização do grid
+			for(int i = 0; i < SCREEN_HEIGHT/UNIT_SIZE; i++) {
+				g.drawLine(i*UNIT_SIZE, 0, i*UNIT_SIZE, SCREEN_HEIGHT);
+				g.drawLine(0, i*UNIT_SIZE, SCREEN_WIDTH, i*UNIT_SIZE);
+			}
+			
+			// Maças ocupando o espaço de 1 tale do grid
+			g.setColor(new Color(239, 154, 154));
+			g.fillOval(appleX, appleY, UNIT_SIZE, UNIT_SIZE);
+			
+		}
 		
 	}
 	
-	public void componentesPintura(Graphics g) {
+	public void newApple() {
+		appleX = random.nextInt((int)(SCREEN_WIDTH/UNIT_SIZE))*UNIT_SIZE;
+		appleY = random.nextInt((int)(SCREEN_HEIGHT/UNIT_SIZE))*UNIT_SIZE;
+	}
+	
+	public void move() {
 		
 	}
 	
-	public void Pintura (Graphics g) {
+	public void checkApple() {
 		
 	}
 	
-	public void novaMaca() {
-		
-	}
-	
-	public void movimentos() {
-		
-	}
-	
-	public void verificarMaca() {
-		
-	}
-	
-	public void colissoes() {
+	public void checkCollisions() {
 		
 	}
 	

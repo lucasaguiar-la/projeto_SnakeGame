@@ -70,6 +70,13 @@ public class ConfigGame extends JPanel implements ActionListener{
 				}
 			}
 			
+			// Placar no jogo (score)
+			g.setColor(new Color(114, 154, 211));
+			g.setFont(new Font("Roboto",Font.ITALIC, 40));
+			FontMetrics metrics = getFontMetrics(g.getFont());
+			g.drawString("Score: " + appleEatens, (SCREEN_WIDTH - metrics.stringWidth("Score: " + appleEatens))/2, g.getFont().getSize());	
+		} else {
+			gameOver(g);
 		}
 		
 	}
@@ -141,7 +148,19 @@ public class ConfigGame extends JPanel implements ActionListener{
 		}
 	}
 	
-	public void gameOver() {
+	public void gameOver(Graphics g) {
+		
+		// Painel de Score
+		g.setColor(new Color(0, 142, 130));
+		g.setFont(new Font("Roboto",Font.ITALIC, 65));
+		FontMetrics metricsScore = getFontMetrics(g.getFont());
+		g.drawString("Score: " + appleEatens, (SCREEN_WIDTH - metricsScore.stringWidth("Score: " + appleEatens))/2, g.getFont().getSize());
+		
+		// Texto de GameOver
+		g.setColor(new Color(0, 142, 130));
+		g.setFont(new Font("Roboto", Font.ITALIC, 75));
+		FontMetrics metricsGameOver = getFontMetrics(g.getFont());
+		g.drawString("Game Over", (SCREEN_WIDTH - metricsGameOver.stringWidth("Game Over"))/2, SCREEN_HEIGHT/2);
 		
 	}
 	
